@@ -7,7 +7,7 @@ export default class Grpc {
   config: GlobalConfig;
   client: any;
   requesters: object;
-  private _promiseClientName;
+  private _promiseClientName: string;
 
   constructor(model: Model & typeof BaseModel, config: GlobalConfig) {
     this.model = model;

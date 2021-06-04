@@ -1,5 +1,5 @@
-import { Components } from './interfaces/Components';
-import { GlobalConfig } from './interfaces/Config';
+import { Components } from "./interfaces/Components";
+import { GlobalConfig } from "./interfaces/Config";
 declare const _default: {
     install(components: Components, options: GlobalConfig): void;
 };

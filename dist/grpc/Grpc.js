@@ -19,17 +19,17 @@ export default class Grpc {
             this.client = new this.model.grpcWebPb[this._promiseClientName](url, credentials, options);
             return;
         }
-        throw new Error('[Vuex ORM Grpc] The client instance is not registered.');
+        throw new Error("[Vuex ORM Grpc] The client instance is not registered.");
     }
     registerRequesters() {
         if (this.model.grpcWebPb) {
             Object.keys(this.model.grpcWebPb)
-                .filter((key) => key.includes(this.model.entity) && key.includes('Request'))
+                .filter((key) => key.includes(this.model.entity) && key.includes("Request"))
                 .forEach((key) => (this.requesters[key] = new this.model.grpcWebPb[key]()));
             this.requesters[this.model.entity] = new this.model.grpcWebPb[this.model.entity]();
         }
         else {
-            throw new Error('[Vuex ORM Grpc] grpc_web_pb is note defined.');
+            throw new Error("[Vuex ORM Grpc] grpc_web_pb is note defined.");
         }
     }
 }

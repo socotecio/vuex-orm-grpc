@@ -1,4 +1,5 @@
 # Vuex ORM GRPC
+This plugin allow you to perform grpc call from your vuex orm models
 
 ## QuickStart
 ### Installation
@@ -17,28 +18,45 @@
 	import { Model } from "@vuex-orm/core";  
 		  
 	export default class Pamphlet extends Model {  
-	  static entity = "Foo";  
+	  static entity = "Pamphlet";  
 	  
-	  static controller = "FooController";  
+	  static controller = "PamphletController";  
 	  
-	  static grpcWebPb = require("@/grpc/generated/foo_grpc_web_pb");  
+	  static grpcWebPb = require("@/grpc/generated/pamhplet_grpc_web_pb");  
 	 
 	  static grpcOptions = {  
-	  url: "http://localhost:8082",  
-	  credentials: null,  
-	  options: null  
+    	  url: "http://localhost:8082",  
+    	  credentials: null,  
+    	  options: null  
 	  };  
 	  
 	  static primaryKey = "uuid";  
 	  
 	  static fields() {  
-	  return {  
-	  uuid: this.uid(),  
-	  code: this.string(),  
-	  createdAt: this.string(),  
-	  updatedAt: this.string(),  
-	  modifiedBy: this.string(),  
-	  isArchived: this.boolean()  
-	 };  
+    	  return {  
+    	  uuid: this.uid(),  
+    	  code: this.string(),  
+    	  createdAt: this.string(),  
+    	  updatedAt: this.string(),  
+    	  modifiedBy: this.string(),  
+    	  isArchived: this.boolean()  
+    	  };  
 	  }  
+	}
+
+### Usage
+	methods: {
+		fetchPamphletsVuexORM() {  
+			Pamphlet.grpc()  
+				.list(Pamphlet.grpc().PamphletListRequest, {})  
+					.then(r => {  
+						console.log(r.toObject())  
+						Pamphlet.insert({  
+						data: r.toObject().resultsList  
+					    });  
+				    })  
+				    .catch(error => {  
+					    throw new Error(error);  
+				    });  
+		},
 	}

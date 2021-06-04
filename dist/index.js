@@ -21,17 +21,17 @@ class Grpc {
             this.client = new this.model.grpcWebPb[this._promiseClientName](url, credentials, options);
             return;
         }
-        throw new Error('[Vuex ORM Grpc] The client instance is not registered.');
+        throw new Error("[Vuex ORM Grpc] The client instance is not registered.");
     }
     registerRequesters() {
         if (this.model.grpcWebPb) {
             Object.keys(this.model.grpcWebPb)
-                .filter((key) => key.includes(this.model.entity) && key.includes('Request'))
+                .filter((key) => key.includes(this.model.entity) && key.includes("Request"))
                 .forEach((key) => (this.requesters[key] = new this.model.grpcWebPb[key]()));
             this.requesters[this.model.entity] = new this.model.grpcWebPb[this.model.entity]();
         }
         else {
-            throw new Error('[Vuex ORM Grpc] grpc_web_pb is note defined.');
+            throw new Error("[Vuex ORM Grpc] grpc_web_pb is note defined.");
         }
     }
 }
@@ -44,11 +44,11 @@ function ModelMixin(model, config) {
         return new Grpc(this, config);
     };
     model.prototype.$toProto = function () {
-        let requester = new this.constructor.grpcWebPb[this.constructor.entity]();
-        Object.keys(this).forEach(key => {
-            let key_fun = `set${key.charAt(0).toUpperCase()}${key.slice(1)}`;
-            if (requester[key_fun]) {
-                requester[key_fun](this[key]);
+        const requester = new this.constructor.grpcWebPb[this.constructor.entity]();
+        Object.keys(this).forEach((key) => {
+            const keyFun = `set${key.charAt(0).toUpperCase()}${key.slice(1)}`;
+            if (requester[keyFun]) {
+                requester[keyFun](this[key]);
             }
         });
         return requester;

@@ -46,17 +46,17 @@ This plugin allow you to perform grpc call from your vuex orm models
 
 ### Usage
 	methods: {
-		fetchPamphletsVuexORM() {  
-			Pamphlet.grpc()  
-				.list(Pamphlet.grpc().PamphletListRequest, {})  
-					.then(r => {  
-						console.log(r.toObject())  
-						Pamphlet.insert({  
-						data: r.toObject().resultsList  
-					    });  
-				    })  
-				    .catch(error => {  
-					    throw new Error(error);  
-				    });  
-		},
+		fetchPamphletsVuexORM() {
+      Pamphlet.grpc()
+        .list(Pamphlet.grpc().PamphletListRequest, {})
+        .then(r => {
+          console.log(r.toObject())
+          Pamphlet.insert({
+            data: r.toObject().resultsList
+          });
+        })
+        .catch(error => {
+          throw new Error(error);
+        });
+    }
 	}

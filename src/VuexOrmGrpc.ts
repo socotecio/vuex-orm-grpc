@@ -1,8 +1,8 @@
-import { Model as BaseModel } from '@vuex-orm/core';
-import { Model } from './interfaces/Model';
-import { Components } from './interfaces/Components';
-import { GlobalConfig } from './interfaces/Config';
-import { ModelMixin } from './mixins/Model';
+import { Model as BaseModel } from "@vuex-orm/core";
+import { Model } from "./interfaces/Model";
+import { Components } from "./interfaces/Components";
+import { GlobalConfig } from "./interfaces/Config";
+import { ModelMixin } from "./mixins/Model";
 
 export default class VuexOrmGrpc {
   /**

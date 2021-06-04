@@ -1,6 +1,6 @@
-import { Model as BaseModel } from '@vuex-orm/core';
-import { Model } from '../interfaces/Model';
-import { GlobalConfig } from '../interfaces/Config';
+import { Model as BaseModel } from "@vuex-orm/core";
+import { Model } from "../interfaces/Model";
+import { GlobalConfig } from "../interfaces/Config";
 
 export default class Grpc {
   model: Model & typeof BaseModel;
@@ -27,20 +27,30 @@ export default class Grpc {
     const options = this.model.grpcOptions.options;
     // eslint-disable-next-line no-prototype-builtins
     if (this.model.grpcWebPb.hasOwnProperty(this._promiseClientName)) {
-      this.client = new this.model.grpcWebPb[this._promiseClientName](url, credentials, options);
+      this.client = new this.model.grpcWebPb[this._promiseClientName](
+        url,
+        credentials,
+        options
+      );
       return;
     }
-    throw new Error('[Vuex ORM Grpc] The client instance is not registered.');
+    throw new Error("[Vuex ORM Grpc] The client instance is not registered.");
   }
 
   private registerRequesters(): void {
     if (this.model.grpcWebPb) {
       Object.keys(this.model.grpcWebPb)
-        .filter((key) => key.includes(this.model.entity) && key.includes('Request'))
-        .forEach((key) => (this.requesters[key] = new this.model.grpcWebPb[key]()));
-      this.requesters[this.model.entity] = new this.model.grpcWebPb[this.model.entity]();
+        .filter(
+          (key) => key.includes(this.model.entity) && key.includes("Request")
+        )
+        .forEach(
+          (key) => (this.requesters[key] = new this.model.grpcWebPb[key]())
+        );
+      this.requesters[this.model.entity] = new this.model.grpcWebPb[
+        this.model.entity
+      ]();
     } else {
-      throw new Error('[Vuex ORM Grpc] grpc_web_pb is note defined.');
+      throw new Error("[Vuex ORM Grpc] grpc_web_pb is note defined.");
     }
   }
 }

@@ -1,5 +1,13 @@
 version: 2
 jobs:
+  lint:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run: yarn
+      - run: yarn make-it-beautiful
+
   test:
     docker:
       - image: circleci/node:latest
@@ -15,16 +23,17 @@ jobs:
       - checkout
       - run: npm
       - run: npm build
-#      - run: npx semantic-release
+      - run: npx semantic-release
 
 workflows:
   version: 2
   test_and_release:
     jobs:
+      - lint
       - test
       - release:
           requires:
             - test
           filters:
             branches:
-              only: main
+              only: master

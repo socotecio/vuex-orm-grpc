@@ -1,7 +1,7 @@
 {
   "name": "vuex-orm-grpc",
-  "version": "1.0.1",
-  "description": "",
+  "version": "0.0.0",
+  "description": "This plugin allow you to perform grpc call from your vuex orm models",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
@@ -14,7 +14,7 @@
     "make-it-beautiful": "tslint -p tsconfig.json && prettier --write \"src/**/*.ts\"",
     "semantic-release": "semantic-release"
   },
-  "author": "",
+  "author": "Jabert",
   "license": "ISC",
   "devDependencies": {
     "@open-wc/building-rollup": "^1.10.0",
@@ -35,5 +35,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/socotecio/vuex-orm-grpc.git"
-  }
+  },
+  "keywords": [
+    "vue",
+    "vuex",
+    "vuex-orm",
+    "grpc",
+    "protobuf"
+  ]
 }

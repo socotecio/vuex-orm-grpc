@@ -16,9 +16,13 @@ class Grpc {
         const url = this.model.grpcOptions.url;
         const credentials = this.model.grpcOptions.credentials;
         const options = this.model.grpcOptions.options;
-        // eslint-disable-next-line no-prototype-builtins
         if (this.model.grpcWebPb.hasOwnProperty(this._promiseClientName)) {
-            this.client = new this.model.grpcWebPb[this._promiseClientName](url, credentials, options);
+            if (typeof this.model.grpcWebPb[this._promiseClientName] === "object") {
+                this.client = this.model.grpcWebPb[this._promiseClientName];
+            }
+            else {
+                this.client = new this.model.grpcWebPb[this._promiseClientName](url, credentials, options);
+            }
             return;
         }
         throw new Error("[Vuex ORM Grpc] The client instance is not registered.");

@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package pamphlet.paphlet_services;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+
+service PamphletController {
+    rpc List(PamphletListRequest) returns (PamphletListResponse) {}
+    rpc Create(Pamphlet) returns (Pamphlet) {}
+    rpc Retrieve(PamphletRetrieveRequest) returns (Pamphlet) {}
+    rpc Update(Pamphlet) returns (Pamphlet) {}
+    rpc Destroy(PamphletDestroyRequest) returns (google.protobuf.Empty) {}
+}
+
+
+message Pamphlet {
+    string uuid = 1;
+    string code = 2;
+    string created_at = 3;
+    string updated_at = 4;
+    string modified_by = 5;
+    bool is_archived = 6;
+}
+
+message PamphletListRequest {
+}
+
+message PamphletListResponse {
+    repeated Pamphlet results = 1;
+    int32 count = 2;
+}
+
+message PamphletRetrieveRequest {
+    string uuid = 1;
+}
+
+message PamphletDestroyRequest {
+    string uuid = 1;
+}
+

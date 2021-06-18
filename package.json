@@ -26,7 +26,7 @@
     }
   },
   "author": "Jabert",
-  "license": "ISC",
+  "license": "",
   "devDependencies": {
     "@open-wc/building-rollup": "^1.10.0",
     "@types/jest": "^26.0.23",

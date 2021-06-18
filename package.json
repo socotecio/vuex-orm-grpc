@@ -7,37 +7,42 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "prepare": "husky install",
-    "test": "test",
+    "test": "jest",
     "tsc": "tsc",
     "build": "rimraf dist && tsc && rollup -c",
     "build-dev": "tsc && rollup -c",
-    "format": "prettier --write \"src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "make-it-beautiful": "tslint -p tsconfig.json && prettier --write \"src/**/*.ts\"",
     "semantic-release": "semantic-release",
     "watch": "npm-watch"
   },
   "watch": {
-    "build-dev" : {
+    "build-dev": {
       "patterns": [
         "src"
       ],
-      "extensions" : "js, ts"
+      "extensions": "js, ts"
     }
   },
   "author": "Jabert",
   "license": "ISC",
   "devDependencies": {
     "@open-wc/building-rollup": "^1.10.0",
+    "@types/jest": "^26.0.23",
     "@vuex-orm/core": "^0.36.4",
     "deepmerge": "^4.2.2",
+    "google-protobuf": "^3.17.3",
+    "grpc-web": "^1.2.1",
     "husky": "^6.0.0",
+    "jest": "^27.0.4",
     "npm-watch": "^0.9.0",
     "prettier": "^2.3.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.48.0",
     "rollup-plugin-typescript2": "^0.30.0",
     "semantic-release": "^17.4.3",
+    "ts-jest": "^27.0.3",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.2.4",

@@ -1,5 +1,4 @@
-# Vuex ORM GRPC
-
+# Vuex ORM GRPC [![CircleCI](https://circleci.com/gh/socotecio/vuex-orm-grpc.svg?style=svg&circle-token=4aeecba52d18f8b5d99fbb9a1c139452dc0097eb)](https://app.circleci.com/pipelines/github/socotecio/vuex-orm-grpc)
 This plugin allow you to perform grpc call from your vuex orm models
 
 ## QuickStart

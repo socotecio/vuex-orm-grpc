@@ -2,7 +2,7 @@
 import { Model } from "@vuex-orm/core";
 import { testStore } from "./helpers/NewStore";
 
-describe("First Test", function () {
+describe("Grpc in my Model", function () {
   class Pamphlet extends Model {
     static entity = "Pamphlet";
 

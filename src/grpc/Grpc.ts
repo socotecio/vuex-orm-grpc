@@ -22,13 +22,13 @@ export default class Grpc {
   }
 
   private registerPromiseClientInstance(): void {
-    const url = this.model.grpcOptions.url;
-    const credentials = this.model.grpcOptions.credentials;
-    const options = this.model.grpcOptions.options;
     if (this.model.grpcWebPb.hasOwnProperty(this._promiseClientName)) {
       if (typeof this.model.grpcWebPb[this._promiseClientName] === "object") {
         this.client = this.model.grpcWebPb[this._promiseClientName];
       } else {
+        const url = this.model.grpcOptions.url;
+        const credentials = this.model.grpcOptions.credentials;
+        const options = this.model.grpcOptions.options;
         this.client = new this.model.grpcWebPb[this._promiseClientName](
           url,
           credentials,
